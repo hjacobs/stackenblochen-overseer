@@ -33,6 +33,7 @@ def home():
     rows = c.fetchall()
     c.execute('SELECT violations.reporter, (SUM(votes.drunkenness) + SUM(votes.lack_of_love) + SUM(votes.obviousness)) AS score FROM violations JOIN votes ON votes.violation_id = violations.id AND votes.voter != violations.reporter GROUP BY violations.reporter ORDER BY score DESC')
     top = c.fetchall()
+    conn.close()
     return render_template('index.html', rows=rows, top=top)
 
 @app.route('/report', methods=['GET', 'POST'])
@@ -42,6 +43,7 @@ def report():
         c = conn.cursor()
         c.execute('INSERT INTO violations (ts, reporter, violation_text) VALUES (:ts, :reporter, :text)', {'ts': time.time(), 'reporter': session['username'], 'text': request.form['violation_text']})
         conn.commit()
+        conn.close()
         return redirect('/')
     else:
         return render_template('report.html')
@@ -67,6 +69,7 @@ def vote(violation_id):
     c.execute('DELETE FROM votes WHERE violation_id = :id AND voter = :voter', data)
     c.execute('INSERT INTO votes (violation_id, voter, drunkenness, lack_of_love, obviousness, ts) VALUES (:id, :voter, :drunkenness, :lack_of_love, :obviousness, :ts)', data)
     conn.commit()
+    conn.close()
     return redirect('/')
 
 
