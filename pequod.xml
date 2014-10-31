@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<manifest xmlns="http://tech.zalando.com/pequod/schema/registry" version="1.0">
+    <resources>
+        <cpu default-vmhz="1000" min-vmhz="1000"/>
+        <memory default-mb="128" min-mb="128"/>
+        <filehandles default-count="4096" min-count="4096"/>
+        <processes default-count="10" min-count="10"/>
+    </resources>
+    <filesystems>
+        <temporary default-mb="100" mountpoint="/tmp"/>
+    </filesystems>
+    <services>
+        <provide service-name="greeting-backend" service-version="1" local-port="8080"/>
+    </services>
+</manifest>

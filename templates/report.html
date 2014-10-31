@@ -1,0 +1,22 @@
+<html>
+<body>
+
+<h1>Report</h1>
+
+<form method="POST" action="/report">
+
+    <div>
+        <label>Your Name</label>
+        {{ username|e }}
+    </div>
+
+    <div>
+        <label>Violation Text</label>
+        <textarea name="violation_text"></textarea>
+    </div>
+    <button type="submit">Submit</button>
+
+</form>
+
+</body>
+</html>

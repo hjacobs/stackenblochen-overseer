@@ -1,0 +1,64 @@
+<html>
+<title>Stackenblochen</title>
+<body>
+
+<h1>Stackenblochen</h1>
+
+<a href="/report">Report a violation</a>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Text</th>
+        <th>Reporter</th>
+        <th>Drunkenness</th>
+        <th>Lack of Love</th>
+        <th>Obviousness</th>
+    </tr>
+{% for row in rows: %}
+
+<form action="/vote/{{ row.id|e }}" method="post">
+<tr>
+    <td>{{ row.id|e }}</td>
+    <td>
+ {{ row.violation_text|e }}
+ </td>
+    <td>
+ {{ row.reporter|e }}
+ </td>
+
+ <td>
+     <input type="radio" name="drunkenness" value="1" {{ 'checked' if row.drunkenness == 1 }}/>
+     <input type="radio" name="drunkenness" value="2" {{ 'checked' if row.drunkenness == 2 }}/>
+     <input type="radio" name="drunkenness" value="3" {{ 'checked' if row.drunkenness == 3 }}/>
+     <input type="radio" name="drunkenness" value="4" {{ 'checked' if row.drunkenness == 4 }}/>
+     <input type="radio" name="drunkenness" value="5" {{ 'checked' if row.drunkenness == 5 }}/>
+ </td>
+
+ <td>
+     <input type="radio" name="lack_of_love" value="1" {{ 'checked' if row.lack_of_love == 1 }}/>
+     <input type="radio" name="lack_of_love" value="2" {{ 'checked' if row.lack_of_love == 2 }}/>
+     <input type="radio" name="lack_of_love" value="3" {{ 'checked' if row.lack_of_love == 3 }}/>
+     <input type="radio" name="lack_of_love" value="4" {{ 'checked' if row.lack_of_love == 4 }}/>
+     <input type="radio" name="lack_of_love" value="5" {{ 'checked' if row.lack_of_love == 5 }}/>
+ </td>
+
+ <td>
+     <input type="radio" name="obviousness" value="1" {{ 'checked' if row.obviousness == 1 }}/>
+     <input type="radio" name="obviousness" value="2" {{ 'checked' if row.obviousness == 2 }}/>
+     <input type="radio" name="obviousness" value="3" {{ 'checked' if row.obviousness == 3 }}/>
+     <input type="radio" name="obviousness" value="4" {{ 'checked' if row.obviousness == 4 }}/>
+     <input type="radio" name="obviousness" value="5" {{ 'checked' if row.obviousness == 5 }}/>
+ </td>
+
+ <td>
+    <button type="submit">Vote</button>
+ </td>
+
+ </tr>
+ </form>
+ {% endfor %}
+ </table>
+
+</body>
+</html>
