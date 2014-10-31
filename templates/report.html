@@ -1,18 +1,22 @@
 <html>
+<head>
+    <title>Report a Stackenblochen Violation</title>
+    <link rel="stylesheet" href="/static/base.css" type="text/css" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
 <body>
 
-<h1>Report</h1>
+<h1>Report a Stackenblochen Violation</h1>
+
+<p>You help to make the world better by reporting any violation of the Stackenblochen principle!
+
+</p>
 
 <form method="POST" action="/report">
 
     <div>
-        <label>Your Name</label>
-        {{ username|e }}
-    </div>
-
-    <div>
-        <label>Violation Text</label>
-        <textarea name="violation_text"></textarea>
+        <label>Violation Text (source code, text excerpt, ..)</label>
+        <textarea name="violation_text" rows="8" cols="100"></textarea>
     </div>
     <button type="submit">Submit</button>
 

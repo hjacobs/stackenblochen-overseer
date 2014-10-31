@@ -1,19 +1,25 @@
 <html>
-<title>Stackenblochen</title>
+<head>
+    <title>Stackenblochen</title>
+    <link rel="stylesheet" href="/static/base.css" type="text/css" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
 <body>
 
 <h1>Stackenblochen</h1>
 
-<a href="/report">Report a violation</a>
+<p>
+    <a href="/report">Report a violation of Stackenblochen rules!</a>
+</p>
 
 <table>
     <tr>
         <th>ID</th>
         <th>Text</th>
         <th>Reporter</th>
-        <th>Drunkenness</th>
-        <th>Lack of Love</th>
-        <th>Obviousness</th>
+        <th title="How many beers do you believe the violator drank?">Drunkenness</th>
+        <th title="How much 'lack of love' is shown by the violation?">Lack of Love</th>
+        <th title="How obvious is the Stackenblochen violation for you?">Obviousness</th>
     </tr>
 {% for row in rows: %}
 
@@ -28,37 +34,57 @@
  </td>
 
  <td>
-     <input type="radio" name="drunkenness" value="1" {{ 'checked' if row.drunkenness == 1 }}/>
-     <input type="radio" name="drunkenness" value="2" {{ 'checked' if row.drunkenness == 2 }}/>
-     <input type="radio" name="drunkenness" value="3" {{ 'checked' if row.drunkenness == 3 }}/>
-     <input type="radio" name="drunkenness" value="4" {{ 'checked' if row.drunkenness == 4 }}/>
-     <input type="radio" name="drunkenness" value="5" {{ 'checked' if row.drunkenness == 5 }}/>
+     <img src="/static/beer-empty.png" width="16"/>
+     <input type="radio" name="drunkenness" value="1" {{ 'checked' if row.drunkenness == 1 }} title="The violator had at most one beer"/>
+     <input type="radio" name="drunkenness" value="2" {{ 'checked' if row.drunkenness == 2 }} title="Two beers"/>
+     <input type="radio" name="drunkenness" value="3" {{ 'checked' if row.drunkenness == 3 }} title="Three beers"/>
+     <input type="radio" name="drunkenness" value="4" {{ 'checked' if row.drunkenness == 4 }} title="Four beers"/>
+     <input type="radio" name="drunkenness" value="5" {{ 'checked' if row.drunkenness == 5 }} title="The violator must have had five beers or more"/>
+     <img src="/static/beer-full.png" width="16"/>
  </td>
 
  <td>
-     <input type="radio" name="lack_of_love" value="1" {{ 'checked' if row.lack_of_love == 1 }}/>
-     <input type="radio" name="lack_of_love" value="2" {{ 'checked' if row.lack_of_love == 2 }}/>
+     <img src="/static/heart.png" width="16"/>
+     <input type="radio" name="lack_of_love" value="1" {{ 'checked' if row.lack_of_love == 1 }} title=""/>
+     <input type="radio" name="lack_of_love" value="2" {{ 'checked' if row.lack_of_love == 2 }} title="Love is lacking"/>
      <input type="radio" name="lack_of_love" value="3" {{ 'checked' if row.lack_of_love == 3 }}/>
      <input type="radio" name="lack_of_love" value="4" {{ 'checked' if row.lack_of_love == 4 }}/>
-     <input type="radio" name="lack_of_love" value="5" {{ 'checked' if row.lack_of_love == 5 }}/>
+     <input type="radio" name="lack_of_love" value="5" {{ 'checked' if row.lack_of_love == 5 }} title="Cruelty!"/>
+     <img src="/static/broken-heart.png" width="16"/>
  </td>
 
  <td>
-     <input type="radio" name="obviousness" value="1" {{ 'checked' if row.obviousness == 1 }}/>
+     <img src="/static/ant.png" width="16"/>
+     <input type="radio" name="obviousness" value="1" {{ 'checked' if row.obviousness == 1 }} title="Hard to see"/>
      <input type="radio" name="obviousness" value="2" {{ 'checked' if row.obviousness == 2 }}/>
      <input type="radio" name="obviousness" value="3" {{ 'checked' if row.obviousness == 3 }}/>
      <input type="radio" name="obviousness" value="4" {{ 'checked' if row.obviousness == 4 }}/>
-     <input type="radio" name="obviousness" value="5" {{ 'checked' if row.obviousness == 5 }}/>
+     <input type="radio" name="obviousness" value="5" {{ 'checked' if row.obviousness == 5 }} title="Obvious as an elephant"/>
+     <img src="/static/gorgosaurus.png" width="20"/>
  </td>
 
  <td>
-    <button type="submit">Vote</button>
+    <button type="submit" title="Submit your rating!">Vote</button>
  </td>
 
  </tr>
  </form>
  {% endfor %}
  </table>
+
+ <h1>Top Reporters</h1>
+
+<table>
+     <tr><th>Name</th><th>Score</th></tr>
+ {% for row in top: %}
+ <tr>
+     <td>{{ row.reporter|e }}</td>
+    <td align="right">{{ row.score|e }}</td>
+</tr>
+ {% endfor %}
+</table>
+
+<p>You don't know Stackenblochen? Please <a href="https://www.youtube.com/watch?v=zqAdxN1IWQQ">watch the Stackenblochen video</a>.</p>
 
 </body>
 </html>

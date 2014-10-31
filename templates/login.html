@@ -1,11 +1,13 @@
 <html>
 <head>
-<title>Login</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/base.css" type="text/css" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 <body>
-    <h1>Please login</h1>
-    <form action="/login" method="POST">
+    <h1>Please authenticate</h1>
 
+    <form action="/login" method="POST">
         <div>
             <label>Your Name</label>
             <input name="username"/>

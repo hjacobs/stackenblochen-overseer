@@ -31,7 +31,9 @@ def home():
     c = conn.cursor()
     c.execute('SELECT * FROM violations LEFT JOIN votes ON votes.violation_id = violations.id AND votes.voter = :username', {'username': session['username']})
     rows = c.fetchall()
-    return render_template('index.html', rows=rows)
+    c.execute('SELECT violations.reporter, (SUM(votes.drunkenness) + SUM(votes.lack_of_love) + SUM(votes.obviousness)) AS score FROM violations JOIN votes ON votes.violation_id = violations.id AND votes.voter != violations.reporter GROUP BY violations.reporter')
+    top = c.fetchall()
+    return render_template('index.html', rows=rows, top=top)
 
 @app.route('/report', methods=['GET', 'POST'])
 def report():

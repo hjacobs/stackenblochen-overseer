@@ -1,0 +1,21 @@
+body, td, button, th, textarea, input {
+    font: 13px Arial, Helvetica, sans-serif;
+}
+
+th {
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+button:hover {
+    cursor: pointer;
+}
