@@ -10,6 +10,6 @@
         <temporary default-mb="100" mountpoint="/tmp"/>
     </filesystems>
     <services>
-        <provide service-name="greeting-backend" service-version="1" local-port="8080"/>
+        <provide service-name="stackenblochen-overseer" service-version="1" local-port="8080"/>
     </services>
 </manifest>
