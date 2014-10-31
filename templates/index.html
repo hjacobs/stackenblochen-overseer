@@ -1,12 +1,12 @@
 <html>
 <head>
-    <title>Stackenblochen</title>
+    <title>Stackenblochen Overseer</title>
     <link rel="stylesheet" href="/static/base.css" type="text/css" />
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 <body>
 
-<h1>Stackenblochen</h1>
+<h1>Stackenblochen Overseer</h1>
 
 <p>
     <a href="/report">Report a violation of Stackenblochen rules!</a>
@@ -72,7 +72,7 @@
  {% endfor %}
  </table>
 
- <h1>Top Reporters</h1>
+ <h1>Top Stackenblochers</h1>
 
 <table>
      <tr><th>Name</th><th>Score</th></tr>
@@ -84,7 +84,20 @@
  {% endfor %}
 </table>
 
-<p>You don't know Stackenblochen? Please <a href="https://www.youtube.com/watch?v=zqAdxN1IWQQ">watch the Stackenblochen video</a>.</p>
+<h1>About</h1>
+
+<p>You don't know Stackenblochen? Please <a href="https://www.youtube.com/watch?v=zqAdxN1IWQQ">watch the Stackenblochen video</a> first.</p>
+
+<p>You help to make a better world by reporting a violation of Stackenblochen principles.
+Violations can be typos in public text (mails, slides, etc), typos and syntax errors in source code (also in comments) and
+any other obviously stupid mistakes. Reported violations can be rated (scale 1-5) in three different categories: assumed drunkenness, "lack of love" and obviousness. The reporter will get respective score points and reporters with the highest score are the "Top Stackenblochers".
+</p>
+
+<p>This application should have a positive impact on people to review their commits and texts and therefore to increase overall attention to detail and quality.
+</p>
+<p>
+    <a href="/report">Report a violation of Stackenblochen rules!</a>
+</p>
 
 </body>
 </html>
